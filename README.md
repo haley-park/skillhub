@@ -38,6 +38,8 @@
 
 Skillhub automatically picks up skills from both your skill library and your Claude Code commands directory.
 
+![Claude Commands Flow](docs/flow-commands.svg)
+
 ```
 ~/.claude/commands/new-skill.md  (save here)
           ↓  (auto-detected by watchdog)

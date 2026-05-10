@@ -12,15 +12,15 @@ export function relativeTime(isoString: string): string {
   const days = Math.floor(diff.days);
   const weeks = Math.floor(diff.weeks);
 
-  if (minutes < 1) return "방금 전";
-  if (minutes < 60) return `${minutes}분 전`;
-  if (hours < 24) return `${hours}시간 전`;
-  if (days === 1) return "어제";
-  if (days < 7) return `${days}일 전`;
-  if (weeks === 1) return "지난주";
-  if (weeks < 4) return `${weeks}주 전`;
+  if (minutes < 1) return "just now";
+  if (minutes < 60) return `${minutes}m ago`;
+  if (hours < 24) return `${hours}h ago`;
+  if (days === 1) return "yesterday";
+  if (days < 7) return `${days}d ago`;
+  if (weeks === 1) return "last week";
+  if (weeks < 4) return `${weeks}w ago`;
 
-  return dt.toFormat("yyyy.MM.dd");
+  return dt.toFormat("yyyy-MM-dd");
 }
 
 export function formatCost(usd: number): string {

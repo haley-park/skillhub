@@ -15,12 +15,12 @@ export function TagFilter({ tags, selected, onToggle }: TagFilterProps) {
 
   return (
     <nav
-      aria-label="태그 필터"
+      aria-label="Tag filter"
       className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide"
       style={{ scrollbarWidth: "none" }}
     >
       <Chip
-        label="전체"
+        label="All"
         active={allActive}
         onClick={() => {
           if (!allActive) {

@@ -28,8 +28,8 @@ export function SearchBar({ value, onChange }: SearchBarProps) {
       type="search"
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      placeholder="스킬 이름이나 설명으로 검색 (/)"
-      aria-label="스킬 검색"
+      placeholder="Search by name, description or tag (/)"
+      aria-label="Search skills"
       icon={
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="7" cy="7" r="5" />

@@ -35,7 +35,7 @@ export function SkillGrid({ skills, loading, searchQuery, onClearSearch }: Skill
       <div
         className="grid gap-4"
         style={{ gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))" }}
-        aria-label="스킬 로딩 중"
+        aria-label="Loading skills"
         aria-busy="true"
       >
         {Array.from({ length: 6 }).map((_, i) => (
@@ -60,7 +60,7 @@ export function SkillGrid({ skills, loading, searchQuery, onClearSearch }: Skill
       animate="show"
       className="grid gap-4"
       style={{ gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))" }}
-      aria-label={`스킬 ${skills.length}개`}
+      aria-label={`${skills.length} skills`}
     >
       {skills.map((skill) => (
         <motion.div key={skill.id} variants={item}>

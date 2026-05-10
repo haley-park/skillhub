@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import threading
-import time
 from pathlib import Path
 
 from watchdog.events import FileSystemEventHandler
@@ -24,7 +23,7 @@ class _SkillsEventHandler(FileSystemEventHandler):
             return
         src: str = getattr(event, "src_path", "") or ""
         dest: str = getattr(event, "dest_path", "") or ""
-        if src.endswith("SKILL.md") or dest.endswith("SKILL.md"):
+        if src.endswith(".md") or dest.endswith(".md"):
             self._schedule_sync()
 
     def _schedule_sync(self) -> None:
@@ -39,14 +38,17 @@ class _SkillsEventHandler(FileSystemEventHandler):
 
 def start_watcher(sync_callback: callable) -> None:
     global _observer
-    skills_path = settings.skills_path
-    skills_path.mkdir(parents=True, exist_ok=True)
-
-    handler = _SkillsEventHandler(sync_callback)
     _observer = Observer()
-    _observer.schedule(handler, str(skills_path), recursive=True)
+
+    for watch_path, label in [
+        (settings.skills_path, "skills"),
+        (settings.commands_path, "commands"),
+    ]:
+        watch_path.mkdir(parents=True, exist_ok=True)
+        _observer.schedule(_SkillsEventHandler(sync_callback), str(watch_path), recursive=True)
+        print(f"[watcher] Watching {watch_path} ({label})")
+
     _observer.start()
-    print(f"[watcher] Watching {skills_path}")
 
 
 def stop_watcher() -> None:

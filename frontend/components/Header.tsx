@@ -15,10 +15,10 @@ export function Header({ onSync }: HeaderProps) {
   async function handleSync() {
     try {
       const result = await syncSkills();
-      toast(`동기화 완료: +${result.added} ~${result.updated} -${result.removed}`, "success");
+      toast(`Synced: +${result.added} ~${result.updated} -${result.removed}`, "success");
       onSync?.();
     } catch {
-      toast("동기화 실패", "error");
+      toast("Sync failed", "error");
     }
   }
 
@@ -37,8 +37,8 @@ export function Header({ onSync }: HeaderProps) {
             variant="ghost"
             size="icon"
             onClick={handleSync}
-            aria-label="스킬 동기화"
-            title="동기화"
+            aria-label="Sync skills"
+            title="Sync"
           >
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M16 2v4h-4M2 16v-4h4" />

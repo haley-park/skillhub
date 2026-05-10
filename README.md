@@ -1,6 +1,6 @@
 # 🧠 Skillhub
 
-**로컬 AI 스킬 관리 허브** — Anthropic의 SKILL.md 파일들을 한 곳에서 관리하고 테스트하는 개인용 도구입니다.
+**Local AI Skill Hub** — A personal tool for managing and testing your Anthropic SKILL.md files in one place.
 
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
@@ -10,147 +10,55 @@
 
 ---
 
-## 미리보기
+## Preview
 
-### 스킬 라이브러리 홈
-![홈 화면](docs/preview-home.svg)
+### Skill Library Home
+![Home](docs/preview-home.svg)
 
-### 스킬 상세 페이지
-![상세 화면](docs/preview-detail.svg)
+### Skill Detail Page
+![Detail](docs/preview-detail.svg)
 
-### 트리거 테스트 모달
-![트리거 테스트](docs/preview-trigger.svg)
-
----
-
-## 아키텍처
-
-![아키텍처](docs/architecture.svg)
-
-**핵심 원칙**
-- **파일이 곧 진실** — SKILL.md가 디스크에서 정본. DB는 인덱스/캐시
-- **watchdog 자동 감지** — `~/skillhub/skills/` 변경 시 2초 안에 UI 반영
-- **로컬 단일 사용자** — 인증 없음. localhost only
+### Trigger Test Modal
+![Trigger Test](docs/preview-trigger.svg)
 
 ---
 
-## 주요 기능
+## Architecture
 
-| 기능 | 설명 |
-|---|---|
-| 스킬 라이브러리 | SKILL.md 자동 스캔 · 카드 그리드 · 검색 · 태그 필터 |
-| 실시간 동기화 | watchdog 파일 감시 + 5초 폴링으로 새로고침 없이 반영 |
-| 트리거 테스트 | 사용자 메시지 입력 → Anthropic API로 스킬 호출 여부 판단 |
-| 에디터 연동 | VSCode / 시스템 기본 앱으로 SKILL.md 바로 열기 |
-| 토스 스타일 UI | Pretendard 폰트, Framer Motion 애니메이션, 반응형 |
+![Architecture](docs/architecture.svg)
 
----
-
-## 기술 스택
-
-### 백엔드
-| 패키지 | 버전 | 역할 |
-|---|---|---|
-| FastAPI | 0.115 | REST API 서버 |
-| SQLAlchemy | 2.0 (typed) | ORM / DB 인덱스 |
-| PostgreSQL | 16 | 메타데이터 저장 |
-| Alembic | 1.13 | DB 마이그레이션 |
-| watchdog | 6.0 | 파일 시스템 감시 |
-| python-frontmatter | 1.1 | YAML frontmatter 파싱 |
-| anthropic | 0.40+ | 트리거 판단 API |
-
-### 프론트엔드
-| 패키지 | 버전 | 역할 |
-|---|---|---|
-| Next.js | 15.1 (App Router) | 라우팅, SSR |
-| React | 19 | UI 컴포넌트 |
-| TypeScript | 5.7 (strict) | 타입 안전성 |
-| Tailwind CSS | 3.4 | 스타일링 |
-| Framer Motion | 12 | 애니메이션 |
-| Luxon | 3 | 상대 시간 표시 |
-| react-markdown | 9 | 마크다운 렌더링 |
+**Core Principles**
+- **File as source of truth** — SKILL.md on disk is the canonical record. DB is an index/cache.
+- **Auto-detection via watchdog** — Changes in `~/skillhub/skills/` appear in the UI within 2 seconds.
+- **Local single-user** — No auth. localhost only.
 
 ---
 
-## 시작하기
+## Claude Commands Integration
 
-### 사전 요구사항
+Skillhub automatically picks up skills from both your skill library and your Claude Code commands directory.
 
-- Python 3.11+
-- Node.js 20+ + pnpm
-- Docker & Docker Compose
-
-### 1. 저장소 클론
-
-```bash
-git clone https://github.com/haley-park/skillhub.git
-cd skillhub
+```
+~/.claude/commands/new-skill.md  (save here)
+          ↓  (auto-detected by watchdog)
+  Skillhub UI — card appears instantly
+          ↓
+  Claude Code  /new-skill  command also works
 ```
 
-### 2. 환경 변수 설정
+**How it works:**
 
-```bash
-cp backend/.env.example backend/.env
-```
+1. Save a `.md` file with YAML frontmatter to `~/.claude/commands/`
+2. Skillhub's watchdog detects the change and syncs automatically
+3. The skill appears as a card in the UI
+4. The same file is usable as a `/command` in Claude Code
 
-`backend/.env`를 열고 Anthropic API 키를 입력하세요:
-
-```env
-DATABASE_URL=postgresql+psycopg2://skillhub:skillhub@localhost:5432/skillhub
-SKILLS_DIR=~/skillhub/skills
-ANTHROPIC_API_KEY=sk-ant-...        # 여기에 입력
-ANTHROPIC_MODEL=claude-sonnet-4-6
-```
-
-```bash
-cp frontend/.env.local.example frontend/.env.local
-```
-
-### 3. 의존성 설치
-
-```bash
-make install
-```
-
-### 4. DB 실행 + 마이그레이션
-
-```bash
-make db-up
-make migrate
-```
-
-### 5. 샘플 스킬 생성 (선택)
-
-```bash
-make seed
-```
-
-`~/skillhub/skills/`에 3개의 샘플 SKILL.md 파일이 생성됩니다.
-
-### 6. 서버 실행
-
-터미널 두 개를 열고 각각 실행합니다:
-
-```bash
-# 터미널 1 — 백엔드
-make dev-backend
-
-# 터미널 2 — 프론트엔드
-make dev-frontend
-```
-
-**http://localhost:3000** 에서 확인하세요.
-
----
-
-## SKILL.md 작성 방법
-
-`~/skillhub/skills/<폴더명>/SKILL.md` 형식으로 파일을 생성하면 자동으로 등록됩니다.
+**Example — `~/.claude/commands/pdf-extraction.md`:**
 
 ```markdown
 ---
 name: pdf-extraction
-description: PDF 파일에서 텍스트와 표를 추출합니다.
+description: Extracts text and tables from PDF files. Handles multi-column layouts and scanned PDFs.
 tags: [pdf, document, extraction]
 version: 1.0.0
 icon: "📄"
@@ -158,54 +66,193 @@ icon: "📄"
 
 # PDF Extraction Skill
 
-본문 마크다운 내용...
+Your skill content here...
 ```
 
-| 필드 | 필수 | 설명 |
-|---|---|---|
-| `name` | ✅ | 스킬 고유 식별자 (폴더명과 일치 권장) |
-| `description` | ✅ | 스킬 설명 (검색 및 트리거 판단에 사용) |
-| `tags` | - | 태그 배열 (필터링용) |
-| `version` | - | 버전 문자열 |
-| `icon` | - | 이모지 아이콘 (없으면 첫 글자 자동 생성) |
+You can also link skills bidirectionally via symlinks:
+
+```bash
+# Make ~/.claude/skills/ point to your Skillhub library
+ln -s ~/skillhub/skills ~/.claude/skills
+
+# Link a command into your skill library
+ln -s ~/.claude/commands/pdf-extraction.md ~/skillhub/skills/pdf-extraction.md
+```
 
 ---
 
-## API 명세
+## Features
 
-백엔드가 실행 중이면 `http://localhost:8000/docs`에서 Swagger UI로 확인할 수 있습니다.
-
-| 메서드 | 경로 | 설명 |
-|---|---|---|
-| `GET` | `/api/skills` | 스킬 목록 조회 (`?q=검색어&tags=tag1`) |
-| `GET` | `/api/skills/{name}` | 스킬 상세 (frontmatter + 본문) |
-| `POST` | `/api/skills/{name}/test` | 트리거 테스트 |
-| `POST` | `/api/sync` | 폴더 강제 재스캔 |
-| `POST` | `/api/skills/{name}/open` | 에디터/폴더 열기 |
+| Feature | Description |
+|---|---|
+| Skill Library | Auto-scan SKILL.md files · card grid · search · tag filter |
+| Real-time Sync | watchdog file watching + 5s polling — no page refresh needed |
+| Trigger Test | Enter a user message → Anthropic API judges if the skill is triggered |
+| Editor Integration | Open SKILL.md directly in VSCode or your default editor |
+| Toss-style UI | Pretendard font, Framer Motion animations, responsive layout |
 
 ---
 
-## 프로젝트 구조
+## Tech Stack
+
+### Backend
+| Package | Version | Role |
+|---|---|---|
+| FastAPI | 0.115 | REST API server |
+| SQLAlchemy | 2.0 (typed) | ORM / DB index |
+| PostgreSQL | 16 | Metadata storage |
+| Alembic | 1.13 | DB migrations |
+| watchdog | 6.0 | File system watching |
+| python-frontmatter | 1.1 | YAML frontmatter parsing |
+| anthropic | 0.40+ | Trigger detection API |
+
+### Frontend
+| Package | Version | Role |
+|---|---|---|
+| Next.js | 15.1 (App Router) | Routing, SSR |
+| React | 19 | UI components |
+| TypeScript | 5.7 (strict) | Type safety |
+| Tailwind CSS | 3.4 | Styling |
+| Framer Motion | 12 | Animations |
+| Luxon | 3 | Relative time display |
+| react-markdown | 9 | Markdown rendering |
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Python 3.11+
+- Node.js 20+ + pnpm
+- PostgreSQL (local install or Docker)
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/haley-park/skillhub.git
+cd skillhub
+```
+
+### 2. Set up environment variables
+
+```bash
+cp backend/.env.example backend/.env
+```
+
+Open `backend/.env` and fill in your Anthropic API key:
+
+```env
+DATABASE_URL=postgresql+psycopg2://postgres:yourpassword@localhost:5432/skillhub
+SKILLS_DIR=~/skillhub/skills
+COMMANDS_DIR=~/.claude/commands
+ANTHROPIC_API_KEY=sk-ant-...
+ANTHROPIC_MODEL=claude-sonnet-4-6
+```
+
+```bash
+cp frontend/.env.local.example frontend/.env.local
+```
+
+### 3. Install dependencies
+
+```bash
+make install
+```
+
+### 4. Run DB migration
+
+```bash
+make migrate
+```
+
+### 5. Create sample skills (optional)
+
+```bash
+make seed
+```
+
+This generates 3 sample SKILL.md files in `~/skillhub/skills/`.
+
+### 6. Start servers
+
+Open two terminals:
+
+```bash
+# Terminal 1 — Backend
+make dev-backend
+
+# Terminal 2 — Frontend
+make dev-frontend
+```
+
+Visit **http://localhost:3000**.
+
+---
+
+## Writing a SKILL.md
+
+Create a file at `~/skillhub/skills/<folder>/SKILL.md` or `~/.claude/commands/<name>.md` — it will be registered automatically.
+
+```markdown
+---
+name: pdf-extraction
+description: Extracts text and tables from PDF files.
+tags: [pdf, document, extraction]
+version: 1.0.0
+icon: "📄"
+---
+
+# PDF Extraction Skill
+
+Your skill body in Markdown...
+```
+
+| Field | Required | Description |
+|---|---|---|
+| `name` | ✅ | Unique skill identifier (recommend matching folder name) |
+| `description` | ✅ | Skill description (used for search and trigger detection) |
+| `tags` | - | Tag array (for filtering) |
+| `version` | - | Version string |
+| `icon` | - | Emoji icon (first letter used as fallback) |
+
+---
+
+## API Reference
+
+With the backend running, visit `http://localhost:8000/docs` for the Swagger UI.
+
+| Method | Path | Description |
+|---|---|---|
+| `GET` | `/api/skills` | List skills (`?q=query&tags=tag1`) |
+| `GET` | `/api/skills/{name}` | Skill detail (frontmatter + body) |
+| `POST` | `/api/skills/{name}/test` | Trigger test |
+| `POST` | `/api/sync` | Force re-scan of skill directories |
+| `POST` | `/api/skills/{name}/open` | Open in editor or folder |
+
+---
+
+## Project Structure
 
 ```
 skillhub/
 ├── backend/
 │   ├── app/
-│   │   ├── main.py            # FastAPI 앱 + lifespan
-│   │   ├── config.py          # 환경 변수
-│   │   ├── db.py              # SQLAlchemy 엔진
+│   │   ├── main.py            # FastAPI app + lifespan
+│   │   ├── config.py          # Environment variables
+│   │   ├── db.py              # SQLAlchemy engine
 │   │   ├── models/skill.py    # Skill, TriggerTest ORM
-│   │   ├── schemas/skill.py   # Pydantic 스키마
+│   │   ├── schemas/skill.py   # Pydantic schemas
 │   │   ├── routers/           # skills / sync / system
 │   │   └── services/
-│   │       ├── scanner.py     # SKILL.md 파싱 + DB 동기화
-│   │       ├── watcher.py     # watchdog 파일 감시
-│   │       └── trigger.py     # Anthropic API 호출
-│   └── alembic/               # DB 마이그레이션
+│   │       ├── scanner.py     # SKILL.md parsing + DB sync
+│   │       ├── watcher.py     # watchdog file watching
+│   │       └── trigger.py     # Anthropic API call
+│   └── alembic/               # DB migrations
 ├── frontend/
 │   ├── app/
-│   │   ├── page.tsx           # 스킬 라이브러리 홈
-│   │   └── skills/[name]/     # 스킬 상세
+│   │   ├── page.tsx           # Skill library home
+│   │   └── skills/[name]/     # Skill detail
 │   ├── components/
 │   │   ├── ui/                # Button, Chip, Input, Modal, Toast
 │   │   ├── SkillCard.tsx
@@ -213,43 +260,40 @@ skillhub/
 │   │   ├── TriggerTestModal.tsx
 │   │   └── ...
 │   └── lib/
-│       ├── api.ts             # fetch 래퍼
-│       ├── types.ts           # TypeScript 타입
-│       └── format.ts          # Luxon 상대시간
-├── scripts/seed.py            # 샘플 스킬 생성
-├── docker-compose.yml
+│       ├── api.ts             # Fetch wrappers
+│       ├── types.ts           # TypeScript types
+│       └── format.ts          # Luxon relative time
+├── scripts/seed.py            # Sample skill generator
 └── Makefile
 ```
 
 ---
 
-## Makefile 명령어
+## Makefile Commands
 
 ```bash
-make db-up          # PostgreSQL 컨테이너 시작
-make db-down        # 컨테이너 중지
-make migrate        # Alembic 마이그레이션 실행
-make dev-backend    # 백엔드 개발 서버 (port 8000)
-make dev-frontend   # 프론트엔드 개발 서버 (port 3000)
-make install        # 백엔드 + 프론트엔드 의존성 설치
-make seed           # 샘플 SKILL.md 3개 생성
-make sync           # 폴더 강제 재스캔 API 호출
+make migrate        # Run Alembic migrations
+make dev-backend    # Backend dev server (port 8000)
+make dev-frontend   # Frontend dev server (port 3000)
+make install        # Install backend + frontend dependencies
+make seed           # Generate 3 sample SKILL.md files
+make sync           # Force re-scan via API
 ```
 
 ---
 
-## 로드맵
+## Roadmap
 
-| Phase | 내용 | 상태 |
+| Phase | Description | Status |
 |---|---|---|
-| **Phase 1** | Storage + Registry + UI (현재) | ✅ 완료 |
-| **Phase 1.5** | Monaco Editor 인라인 편집 | 예정 |
-| **Phase 2** | Harness — 트리거 벤치마크 / 평가 대시보드 | 예정 |
-| **Phase 3** | Agent 정의, 멀티유저, 인증 | 예정 |
-| **Phase 4** | Workflow DAG, Stripe 결제 | 예정 |
+| **Phase 1** | Storage + Registry + UI (current) | ✅ Done |
+| **Phase 1.5** | Monaco Editor inline editing | Planned |
+| **Phase 2** | Harness — trigger benchmarks / evaluation dashboard | Planned |
+| **Phase 3** | Agent definitions, multi-user, auth | Planned |
+| **Phase 4** | Workflow DAG, billing | Planned |
 
 ---
 
-## 라이선스
+## License
 
 MIT

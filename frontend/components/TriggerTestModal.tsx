@@ -30,7 +30,7 @@ export function TriggerTestModal({ open, onClose, skillName }: TriggerTestModalP
       const res = await testTrigger(skillName, prompt);
       setResult(res);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "오류가 발생했어요");
+      setError(err instanceof Error ? err.message : "An error occurred");
     } finally {
       setLoading(false);
     }
@@ -48,21 +48,21 @@ export function TriggerTestModal({ open, onClose, skillName }: TriggerTestModalP
   }
 
   return (
-    <Modal open={open} onClose={handleClose} title="트리거 테스트">
+    <Modal open={open} onClose={handleClose} title="Trigger Test">
       <div className="flex flex-col gap-4">
         <p className="text-caption text-text-secondary">
-          이 스킬이 어떤 사용자 메시지에서 호출될지 확인해보세요
+          Check what user messages trigger this skill
         </p>
 
         <Textarea
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
-          placeholder="예: PDF에서 표를 뽑아줘"
+          placeholder="e.g. Extract tables from this PDF"
           rows={4}
           onKeyDown={(e) => {
             if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) handleTest();
           }}
-          aria-label="테스트 메시지 입력"
+          aria-label="Test message input"
         />
 
         <Button
@@ -72,7 +72,7 @@ export function TriggerTestModal({ open, onClose, skillName }: TriggerTestModalP
           disabled={!prompt.trim()}
           className="w-full"
         >
-          테스트 실행
+          Run Test
         </Button>
 
         <AnimatePresence>
@@ -112,7 +112,7 @@ export function TriggerTestModal({ open, onClose, skillName }: TriggerTestModalP
                     className="font-semibold text-body"
                     style={{ color: result.triggered ? "var(--color-success)" : "var(--color-warning)" }}
                   >
-                    {result.triggered ? "트리거됨" : "트리거 안 됨"}
+                    {result.triggered ? "Triggered" : "Not triggered"}
                   </p>
                   <p className="text-caption text-text-secondary">{result.reason}</p>
                 </div>
@@ -120,7 +120,7 @@ export function TriggerTestModal({ open, onClose, skillName }: TriggerTestModalP
 
               {/* Meta */}
               <div className="flex items-center gap-4 text-caption text-text-tertiary font-mono">
-                <span>{result.tokens_used}토큰</span>
+                <span>{result.tokens_used} tokens</span>
                 <span>·</span>
                 <span>{formatCost(result.cost_usd)}</span>
                 <span>·</span>
@@ -129,7 +129,7 @@ export function TriggerTestModal({ open, onClose, skillName }: TriggerTestModalP
 
               {/* Reset button */}
               <Button variant="secondary" onClick={handleReset} className="w-full">
-                다시 테스트
+                Test Again
               </Button>
             </motion.div>
           )}

@@ -1,0 +1,84 @@
+<svg width="1280" height="860" viewBox="0 0 1280 860" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', system-ui, sans-serif">
+  <!-- Background -->
+  <rect width="1280" height="860" fill="#F9FAFB"/>
+
+  <!-- ── Header ── -->
+  <rect width="1280" height="64" fill="#FFFFFF"/>
+  <rect y="63" width="1280" height="1" fill="#E5E8EB"/>
+  <text x="36" y="38" font-size="22">🧠</text>
+  <text x="66" y="41" font-size="17" font-weight="700" fill="#191F28">Skillhub</text>
+  <rect x="1212" y="16" width="36" height="36" rx="10" fill="#F2F4F6"/>
+  <text x="1222" y="38" font-size="16" fill="#4E5968">↻</text>
+
+  <!-- ── Breadcrumb ── -->
+  <text x="48" y="105" font-size="13" fill="#8B95A1">← Skillhub</text>
+  <text x="122" y="105" font-size="13" fill="#8B95A1">/</text>
+  <text x="134" y="105" font-size="13" font-weight="600" fill="#4E5968">pdf-extraction</text>
+
+  <!-- ── Header Card ── -->
+  <rect x="48" y="122" width="1184" height="180" rx="20" fill="#FFFFFF" stroke="#E5E8EB" stroke-width="1"/>
+
+  <!-- icon -->
+  <rect x="72" y="148" width="64" height="64" rx="16" fill="#EBF3FE"/>
+  <text x="85" y="190" font-size="34">📄</text>
+
+  <!-- title + description -->
+  <text x="156" y="178" font-size="28" font-weight="700" fill="#191F28" letter-spacing="-0.5">pdf-extraction</text>
+  <text x="156" y="204" font-size="14" fill="#4E5968">PDF 파일에서 텍스트와 표를 추출합니다. 다단 레이아웃, 스캔 PDF 모두 처리 가능합니다.</text>
+
+  <!-- meta row -->
+  <rect x="156" y="222" width="36" height="28" rx="8" fill="#F2F4F6"/>
+  <text x="164" y="240" font-size="11" fill="#4E5968">pdf</text>
+
+  <rect x="202" y="222" width="68" height="28" rx="8" fill="#F2F4F6"/>
+  <text x="210" y="240" font-size="11" fill="#4E5968">document</text>
+
+  <rect x="280" y="222" width="72" height="28" rx="8" fill="#F2F4F6"/>
+  <text x="288" y="240" font-size="11" fill="#4E5968">extraction</text>
+
+  <rect x="362" y="222" width="48" height="28" rx="8" fill="#EBF3FE"/>
+  <text x="370" y="240" font-size="11" font-weight="600" fill="#3182F6">v1.0.0</text>
+
+  <text x="422" y="240" font-size="12" fill="#8B95A1">어제 수정</text>
+
+  <!-- Action buttons -->
+  <rect x="900" y="148" width="308" height="44" rx="12" fill="#3182F6"/>
+  <text x="1003" y="175" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="middle">🧪  트리거 테스트</text>
+
+  <rect x="900" y="202" width="147" height="40" rx="12" fill="#FFFFFF" stroke="#E5E8EB" stroke-width="1"/>
+  <text x="925" y="226" font-size="14" fill="#191F28">📁  폴더 열기</text>
+
+  <rect x="1057" y="202" width="151" height="40" rx="12" fill="#FFFFFF" stroke="#E5E8EB" stroke-width="1"/>
+  <text x="1082" y="226" font-size="14" fill="#191F28">✏️  에디터 열기</text>
+
+  <!-- ── Markdown Body Card ── -->
+  <rect x="48" y="320" width="1184" height="490" rx="20" fill="#FFFFFF" stroke="#E5E8EB" stroke-width="1"/>
+
+  <!-- H1 -->
+  <text x="72" y="366" font-size="22" font-weight="700" fill="#191F28">PDF Extraction Skill</text>
+  <rect x="72" y="376" width="600" height="1" fill="#E5E8EB"/>
+
+  <!-- body text -->
+  <text x="72" y="402" font-size="14" fill="#4E5968">PDF 파일에서 텍스트와 구조화된 데이터를 추출하는 스킬입니다.</text>
+
+  <!-- H2 -->
+  <text x="72" y="438" font-size="17" font-weight="600" fill="#191F28">트리거 조건</text>
+
+  <!-- list items -->
+  <text x="80" y="462" font-size="13" fill="#4E5968">•  PDF 파일에서 텍스트 추출</text>
+  <text x="80" y="482" font-size="13" fill="#4E5968">•  PDF 표 데이터 파싱</text>
+  <text x="80" y="502" font-size="13" fill="#4E5968">•  스캔된 문서 OCR 처리</text>
+  <text x="80" y="522" font-size="13" fill="#4E5968">•  PDF 내용 요약</text>
+
+  <!-- H2 -->
+  <text x="72" y="558" font-size="17" font-weight="600" fill="#191F28">사용 예시</text>
+
+  <!-- code block -->
+  <rect x="72" y="570" width="700" height="92" rx="12" fill="#1E2330"/>
+  <text x="96" y="594" font-size="13" font-family="monospace" fill="#A5D6FF">"이 PDF에서 표를 뽑아서 엑셀로 만들어줘"</text>
+  <text x="96" y="614" font-size="13" font-family="monospace" fill="#A5D6FF">"계약서 PDF의 주요 조항을 요약해줘"</text>
+  <text x="96" y="634" font-size="13" font-family="monospace" fill="#A5D6FF">"스캔된 영수증에서 금액을 읽어줘"</text>
+
+  <!-- bottom label -->
+  <text x="640" y="844" font-size="12" fill="#B0B8C1" text-anchor="middle">Skillhub — 스킬 상세 페이지</text>
+</svg>

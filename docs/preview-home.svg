@@ -1,0 +1,91 @@
+<svg width="1280" height="820" viewBox="0 0 1280 820" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', system-ui, sans-serif">
+  <!-- Page background -->
+  <rect width="1280" height="820" fill="#F9FAFB"/>
+
+  <!-- ── Header ── -->
+  <rect width="1280" height="64" fill="#FFFFFF"/>
+  <rect y="63" width="1280" height="1" fill="#E5E8EB"/>
+  <text x="36" y="38" font-size="22">🧠</text>
+  <text x="66" y="41" font-size="17" font-weight="700" fill="#191F28">Skillhub</text>
+  <!-- sync icon button -->
+  <rect x="1212" y="16" width="36" height="36" rx="10" fill="#F2F4F6"/>
+  <text x="1222" y="38" font-size="16" fill="#4E5968">↻</text>
+
+  <!-- ── Hero ── -->
+  <text x="48" y="136" font-size="32" font-weight="700" fill="#191F28" letter-spacing="-0.5">내 스킬 </text>
+  <text x="202" y="136" font-size="32" font-weight="700" fill="#3182F6" letter-spacing="-0.5">3개</text>
+  <text x="48" y="162" font-size="13" fill="#8B95A1">마지막 동기화 2분 전</text>
+
+  <!-- ── Search bar ── -->
+  <rect x="48" y="184" width="1184" height="48" rx="12" fill="#FFFFFF" stroke="#E5E8EB" stroke-width="1"/>
+  <text x="72" y="213" font-size="15" fill="#B0B8C1">🔍  스킬 이름이나 설명으로 검색  (/)</text>
+
+  <!-- ── Tag chips ── -->
+  <rect x="48" y="248" width="44" height="32" rx="8" fill="#EBF3FE"/>
+  <text x="59" y="268" font-size="13" font-weight="600" fill="#3182F6">전체</text>
+
+  <rect x="102" y="248" width="36" height="32" rx="8" fill="#F2F4F6"/>
+  <text x="111" y="268" font-size="13" fill="#4E5968">pdf</text>
+
+  <rect x="148" y="248" width="44" height="32" rx="8" fill="#F2F4F6"/>
+  <text x="156" y="268" font-size="13" fill="#4E5968">code</text>
+
+  <rect x="202" y="248" width="52" height="32" rx="8" fill="#F2F4F6"/>
+  <text x="210" y="268" font-size="13" fill="#4E5968">review</text>
+
+  <rect x="264" y="248" width="52" height="32" rx="8" fill="#F2F4F6"/>
+  <text x="272" y="268" font-size="13" fill="#4E5968">data</text>
+
+  <rect x="326" y="248" width="64" height="32" rx="8" fill="#F2F4F6"/>
+  <text x="334" y="268" font-size="13" fill="#4E5968">analysis</text>
+
+  <!-- ── Skill Cards Grid ── -->
+  <!-- Card 1: pdf-extraction -->
+  <rect x="48" y="300" width="370" height="200" rx="20" fill="#FFFFFF" stroke="#E5E8EB" stroke-width="1"/>
+  <rect x="72" y="324" width="48" height="48" rx="12" fill="#EBF3FE"/>
+  <text x="83" y="355" font-size="24">📄</text>
+  <text x="72" y="396" font-size="17" font-weight="700" fill="#191F28">pdf-extraction</text>
+  <text x="72" y="418" font-size="13" fill="#4E5968">PDF 파일에서 텍스트와 표를 추출합니다.</text>
+  <text x="72" y="434" font-size="13" fill="#4E5968">다단 레이아웃, 스캔 PDF 모두 지원.</text>
+  <rect x="72" y="460" width="36" height="28" rx="8" fill="#F2F4F6"/>
+  <text x="80" y="478" font-size="11" fill="#4E5968">pdf</text>
+  <rect x="118" y="460" width="68" height="28" rx="8" fill="#F2F4F6"/>
+  <text x="125" y="478" font-size="11" fill="#4E5968">document</text>
+  <text x="336" y="478" font-size="12" fill="#8B95A1">어제</text>
+
+  <!-- Card 2: code-review -->
+  <rect x="434" y="300" width="370" height="200" rx="20" fill="#FFFFFF" stroke="#E5E8EB" stroke-width="1"/>
+  <rect x="458" y="324" width="48" height="48" rx="12" fill="#EBF3FE"/>
+  <text x="470" y="355" font-size="24">🔍</text>
+  <text x="458" y="396" font-size="17" font-weight="700" fill="#191F28">code-review</text>
+  <text x="458" y="418" font-size="13" fill="#4E5968">코드를 리뷰하고 버그, 보안 취약점,</text>
+  <text x="458" y="434" font-size="13" fill="#4E5968">개선 사항을 제안합니다.</text>
+  <rect x="458" y="460" width="36" height="28" rx="8" fill="#F2F4F6"/>
+  <text x="464" y="478" font-size="11" fill="#4E5968">code</text>
+  <rect x="504" y="460" width="52" height="28" rx="8" fill="#F2F4F6"/>
+  <text x="512" y="478" font-size="11" fill="#4E5968">review</text>
+  <rect x="566" y="460" width="56" height="28" rx="8" fill="#F2F4F6"/>
+  <text x="574" y="478" font-size="11" fill="#4E5968">security</text>
+  <text x="720" y="478" font-size="12" fill="#8B95A1">3일 전</text>
+
+  <!-- Card 3: data-analysis -->
+  <rect x="820" y="300" width="370" height="200" rx="20" fill="#FFFFFF" stroke="#E5E8EB" stroke-width="1"/>
+  <rect x="844" y="324" width="48" height="48" rx="12" fill="#EBF3FE"/>
+  <text x="856" y="355" font-size="24">📊</text>
+  <text x="844" y="396" font-size="17" font-weight="700" fill="#191F28">data-analysis</text>
+  <text x="844" y="418" font-size="13" fill="#4E5968">CSV, JSON, Excel 데이터를 분석하고</text>
+  <text x="844" y="434" font-size="13" fill="#4E5968">시각화 인사이트를 제공합니다.</text>
+  <rect x="844" y="460" width="36" height="28" rx="8" fill="#F2F4F6"/>
+  <text x="851" y="478" font-size="11" fill="#4E5968">data</text>
+  <rect x="890" y="460" width="60" height="28" rx="8" fill="#F2F4F6"/>
+  <text x="898" y="478" font-size="11" fill="#4E5968">analysis</text>
+  <text x="1108" y="478" font-size="12" fill="#8B95A1">지난주</text>
+
+  <!-- Card 4 skeleton (empty-ish) -->
+  <rect x="48" y="516" width="370" height="200" rx="20" fill="#FFFFFF" stroke="#E5E8EB" stroke-width="1" stroke-dasharray="6,4"/>
+  <text x="190" y="604" font-size="32" text-anchor="middle">🪄</text>
+  <text x="233" y="636" font-size="14" fill="#8B95A1" text-anchor="middle">SKILL.md를 추가하면 나타나요</text>
+
+  <!-- bottom label -->
+  <text x="640" y="800" font-size="12" fill="#B0B8C1" text-anchor="middle">Skillhub — 스킬 라이브러리 홈</text>
+</svg>

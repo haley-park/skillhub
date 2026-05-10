@@ -1,0 +1,47 @@
+<svg width="1280" height="860" viewBox="0 0 1280 860" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', system-ui, sans-serif">
+  <!-- Dimmed page background -->
+  <rect width="1280" height="860" fill="#F9FAFB"/>
+  <rect width="1280" height="860" fill="rgba(25,31,40,0.5)"/>
+
+  <!-- ── Modal ── -->
+  <rect x="390" y="160" width="500" height="540" rx="28" fill="#FFFFFF" stroke="#E5E8EB" stroke-width="1"/>
+
+  <!-- Modal header -->
+  <text x="422" y="210" font-size="17" font-weight="600" fill="#191F28">트리거 테스트</text>
+  <rect x="847" y="188" width="28" height="28" rx="8" fill="#F2F4F6"/>
+  <text x="855" y="207" font-size="14" fill="#8B95A1">✕</text>
+  <rect x="390" y="226" width="500" height="1" fill="#E5E8EB"/>
+
+  <!-- Modal body -->
+  <text x="422" y="256" font-size="13" fill="#8B95A1">이 스킬이 어떤 사용자 메시지에서 호출될지 확인해보세요</text>
+
+  <!-- Textarea -->
+  <rect x="422" y="270" width="436" height="120" rx="12" fill="#FFFFFF" stroke="#3182F6" stroke-width="1.5"/>
+  <!-- focus ring -->
+  <rect x="418" y="266" width="444" height="128" rx="14" fill="none" stroke="#EBF3FE" stroke-width="4"/>
+  <text x="440" y="298" font-size="14" fill="#191F28">이 PDF에서 표를 뽑아서 엑셀로</text>
+  <text x="440" y="318" font-size="14" fill="#191F28">변환해줘</text>
+  <!-- cursor -->
+  <rect x="440" y="328" width="2" height="16" fill="#3182F6"/>
+
+  <!-- Run button -->
+  <rect x="422" y="406" width="436" height="48" rx="12" fill="#3182F6"/>
+  <text x="640" y="436" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="middle">테스트 실행</text>
+
+  <!-- ── Result area ── -->
+  <!-- Triggered badge -->
+  <rect x="422" y="470" width="436" height="76" rx="12" fill="#F0FDF8" stroke="#00C896" stroke-width="1"/>
+  <text x="450" y="508" font-size="26">✅</text>
+  <text x="492" y="502" font-size="15" font-weight="600" fill="#00C896">트리거됨</text>
+  <text x="492" y="522" font-size="12" fill="#4E5968">PDF 표 추출 작업이 이 스킬의 핵심 기능입니다.</text>
+
+  <!-- Meta -->
+  <text x="422" y="574" font-size="12" font-family="monospace" fill="#8B95A1">247토큰  ·  $0.0008  ·  1,234ms</text>
+
+  <!-- Reset button -->
+  <rect x="422" y="590" width="436" height="44" rx="12" fill="#FFFFFF" stroke="#E5E8EB" stroke-width="1"/>
+  <text x="640" y="617" font-size="14" fill="#191F28" text-anchor="middle">다시 테스트</text>
+
+  <!-- bottom label -->
+  <text x="640" y="844" font-size="12" fill="#6B7280" text-anchor="middle">Skillhub — 트리거 테스트 모달</text>
+</svg>
